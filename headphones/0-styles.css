@@ -1,0 +1,146 @@
+/* 0-styles.css - reset, variables, simple selectors */
+
+/* 1) Reset (very small) */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+img { max-width: 100%; display: block; }
+
+/* 2) Variables */
+:root{
+  --max-width: 1000px;
+  --primary: #FF6565;
+  --white: #ffffff;
+  --dark: #07131a;
+  --muted: #9aa6b2;
+  --container-pad: 20px;
+}
+
+/* 3) Base */
+body{
+  font-family: "Source Sans Pro", Arial, sans-serif;
+  color: var(--dark);
+  background: #fff;
+  line-height: 1.45;
+}
+
+/* container: center content and limit width to 1000px */
+.container{
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+/* 4) Header */
+.site-header{
+  position: absolute; /* overlays the hero */
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.header-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+}
+.logo img{ height: 36px; }
+
+/* nav with simple selectors */
+.main-nav a{
+  color: var(--white);
+  text-decoration: none;
+  margin-left: 22px;
+  font-weight: 600;
+  font-size: 14px;
+  opacity: 0.95;
+}
+.main-nav a:hover, .main-nav a:active {
+  color: var(--primary);    /* link hover color required */
+}
+
+/* 5) HERO */
+.hero{
+  position: relative;
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('images/01_headphones_desktop@2x.png'); /* change if your filename differs */
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+  text-align: center;
+}
+
+/* overlay to darken image and create vignette */
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5,12,20,0.55) 0%, rgba(4,14,24,0.90) 70%);
+}
+
+/* hero content sits above overlay */
+.hero-content{
+  position: relative;
+  z-index: 2;
+  padding: 80px 0;
+  max-width: 800px;
+}
+
+/* headings and text */
+.hero-title{
+  font-size: 34px;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: var(--white);
+}
+.hero-sub{
+  color: rgba(255,255,255,0.95);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+/* call to action */
+.btn {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--white);
+  padding: 12px 28px;
+  border-radius: 28px;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  margin: 14px 0;
+  transition: opacity .15s ease;
+}
+.btn:hover, .btn:active {
+  opacity: 0.9;  /* required button hover/active */
+}
+
+/* paragraph under CTA */
+.hero-paragraph{
+  color: rgba(255,255,255,0.8);
+  max-width: 700px;
+  margin: 26px auto 0;
+  font-size: 14px;
+}
+
+/* accessibility focus */
+a:focus, button:focus { outline: 3px solid rgba(255,101,101,0.25); outline-offset: 3px; }
+
+/* 6) MOBILE — switch layout at 480px or less */
+@media (max-width: 480px){
+  .main-nav a { margin-left: 12px; font-size: 13px; }
+  .hero{
+    min-height: 56vh;
+    background-image: url('images/01_headphones_desktop@2x.png'); /* ideally replace with mobile image file */
+    background-position: top center;
+  }
+  .hero-content{ padding: 40px 0; }
+  .hero-title{ font-size: 20px; }
+  .hero-sub{ font-size: 13px; margin-bottom: 10px; }
+  .hero-paragraph{ font-size: 13px; padding: 0 10px; }
+  .logo img{ height: 30px; }
+}
