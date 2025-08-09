@@ -1,0 +1,106 @@
+:root{
+  --max-width: 1000px;
+  --primary: #FF6565;
+  --dark: #07131A; /* dark navy base */
+  --text: #ffffff;
+  --muted: #bfc9d2;
+  --container-pad: 24px;
+}
+
+/* Reset essentials */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Source Sans Pro", Arial, sans-serif;
+  color:var(--dark);
+  background:white;
+}
+
+/* container */
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 var(--container-pad);
+}
+
+/* links/buttons interactions */
+a{color:inherit; text-decoration:none}
+a:hover,a:active{color:var(--primary)}
+button.cta,a.cta{
+  display:inline-block;
+  background:var(--primary);
+  color:#fff;
+  padding:12px 28px;
+  border-radius:30px;
+  text-transform:uppercase;
+  font-weight:600;
+  transition:opacity .15s ease;
+}
+button.cta:hover, a.cta:hover,
+button.cta:active, a.cta:active{
+  opacity:0.9;   /* required */
+}
+
+/* header */
+.site-header{position:relative; padding:20px 0;}
+.site-header .container{display:flex; align-items:center; justify-content:space-between}
+
+/* HERO — big background image + dark gradient overlay */
+.hero{
+  position:relative;
+  min-height:640px;
+  display:flex;
+  align-items:center;
+  color:var(--text);
+  background: url('images/01_headphones_desktop@2x.png') center/cover no-repeat;
+}
+.hero-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(2,12,26,0.6) 0%, rgba(0,17,30,0.9) 70%);
+}
+.hero-content{position:relative; text-align:center; padding:80px 0;}
+.hero h1{font-size:32px; margin:0 0 10px; color:#fff}
+.lead{color:rgba(255,255,255,0.9); font-weight:600}
+.hero-text{max-width:700px; margin:20px auto; color:rgba(255,255,255,0.8)}
+
+/* What we do section */
+.what-we-do{padding:70px 0; background:white; text-align:center}
+.icons{display:flex; gap:28px; justify-content:space-between; margin-top:30px; list-style:none; padding:0}
+.icons li{flex:1; text-align:center}
+
+/* Results — another dark background */
+.results{background:linear-gradient(180deg,#041424,#071b28); color:#fff; padding:80px 0; text-align:center}
+.stats{display:flex; gap:28px; justify-content:center; margin-top:30px}
+/* pentagon using clip-path */
+.pentagon{
+  width:120px; height:120px;
+  background:var(--primary);
+  color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  clip-path: polygon(50% 0%, 92% 35%, 75% 100%, 25% 100%, 8% 35%);
+  margin:0 auto 12px;
+  font-weight:700;
+}
+
+/* Contact */
+.contact{padding:80px 0; background:white; text-align:center}
+.contact-form{max-width:420px; margin:0 auto}
+.contact-form input, .contact-form textarea{
+  width:100%; padding:10px; margin:10px 0; border:1px solid #ddd; border-radius:2px;
+}
+
+/* Footer */
+.site-footer{background:#041424; color:rgba(255,255,255,0.85); padding:28px 0; text-align:center}
+
+/* Accessibility focus */
+a:focus, button:focus, input:focus, textarea:focus{outline:3px solid rgba(255,101,101,0.2); outline-offset:2px}
+
+/* MOBILE BREAKPOINT: 480px and below — switch to mobile layout */
+@media (max-width:480px){
+  .icons{flex-direction:column; align-items:center}
+  .stats{flex-direction:column}
+  .hero{min-height:420px}
+  .hero h1{font-size:20px}
+  .container{padding:0 16px}
+}
